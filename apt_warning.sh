@@ -10,6 +10,9 @@ TEXT_RESET='\e[0m'
 sudo echo ""
 cd ~
 
+# install wget
+if ! dpkg -l | grep -q "^ii.*wget" ; then sudo apt-get update -qq && sudo apt-get install wget -y && sleep 1 ; fi
+
 # download gpg transferring script
 echo -e "${TEXT_YELLOW}Transferring legacy gpg.${TEXT_RESET}\n" && sleep 1
 [ ! -f ./.gpg_transfer.sh ] && wget -q https://raw.githubusercontent.com/chenh19/apt_warning/main/gpg_transfer.sh -O ./.gpg_transfer.sh
